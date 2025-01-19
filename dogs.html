@@ -1,0 +1,68 @@
+<!-- dogs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Meet the special needs dogs at Unstoppable Ranch." />
+  <meta name="keywords" content="Unstoppable Dogs, Special Needs Dogs, Dog Gallery" />
+  <meta name="author" content="Unstoppable Ranch" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Social Sharing Meta -->
+  <meta property="og:title" content="The Dogs | Unstoppable Ranch" />
+  <meta property="og:description" content="Meet the pups who inspire us." />
+  <meta property="og:image" content="images/hero-dogs.jpg" />
+  <meta property="og:url" content="https://yourdomain.com/dogs.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>The Dogs | Unstoppable Ranch</title>
+</head>
+<body>
+  <!-- Dynamic Header -->
+  <div id="header"></div>
+
+  <section class="hero" style="background-image: url('images/hero-dogs.jpg');">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>The Dogs</h1>
+      <p>Meet the Pups who prove that love knows no bounds.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="gallery" id="dogsGallery">
+      <!-- JavaScript (dogs.js) will insert dog items here -->
+    </div>
+  </section>
+
+  <!-- Modal for dog details -->
+  <div class="modal" id="dogModal">
+    <div class="modal-content">
+      <span class="close-modal" id="modalClose">&times;</span>
+      <h2 id="dogName"></h2>
+      <p><strong>Age:</strong> <span id="dogAge"></span></p>
+      <p id="dogBio"></p>
+      <div id="dogPressLinks" style="margin-top:1rem;"></div>
+    </div>
+  </div>
+
+  <!-- Press Links at the Bottom -->
+  <section class="container press-links">
+    <h2>All Press Links</h2>
+    <div id="pressLinksList">
+      <!-- JavaScript will fetch from press-links.txt and display them -->
+    </div>
+  </section>
+
+  <footer>
+    <div id="footer"></div>
+    </footer>
+  <script src="js/main.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/dogs.js"></script>
+</body>
+</html>

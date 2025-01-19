@@ -1,0 +1,335 @@
+/* css/styles.css */
+
+/* fonts */
+@font-face {
+  font-family: 'WorkSans';
+  src:url(../fonts/WorkSans-Regular.woff2);
+}
+@font-face {
+  font-family: 'WorkSans';
+  src:url(../fonts/WorkSans-Black.woff2);
+  font-weight:900;
+}
+
+/* variables */
+* {
+
+  --green: #46ac49;
+  --blue: #70cbf7;
+  --blue-hover:#3eb7f4;
+
+}
+/* Reset/Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic Body / Font */
+body {
+  font-family: 'WorkSans';
+  line-height: 1.5;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 2em;
+  font-weight: 900;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Header / Nav */
+#header {
+  width: 100%;
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-icon {
+  display: inline-block;
+  cursor: pointer;
+  width: 30px;
+  height: 22px;
+  position: relative;
+}
+
+.menu-icon span {
+  background-color: #333;
+  display: block;
+  height: 3px;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.menu-icon.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-icon.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.logo img {
+  height: 69px;
+  max-height: 69px;
+}
+
+.donate-now a {
+  background: var(--green);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.5em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* Main Nav Styles */
+.main-nav {
+  background-color: #f8f8f8;
+  width: 100%;
+  transition: max-height 0.4s ease;
+  overflow: hidden;
+  max-height: 0; /* Hidden by default, toggled in mobile */
+}
+
+.main-nav.nav-open {
+  max-height: 500px; /* Expand when toggled */
+}
+
+.main-nav ul {
+  list-style: none;
+}
+
+.main-nav li {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.main-nav li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.main-nav li a.current {
+  color: var(--blue);
+  font-weight: 900;
+  text-decoration: underline;
+}
+.main-nav li a.current::before {
+  display: inline-block;
+  content: url(../images/icons/paw.svg);
+  height: 12px;
+  width: 12px;
+  padding-right: 3px;
+}
+
+@media (min-width: 768px) {
+  /* Desktop Nav */
+  .menu-icon {
+    display: none; /* Hide hamburger on desktop */
+  }
+  .main-nav {
+    max-height: none;
+    background-color: transparent;
+  }
+  .main-nav ul {
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .main-nav li {
+    margin: 0 0.5rem;
+    padding: 0;
+  }
+}
+
+/* Floating Social Links at bottom right */
+.social-links-floating {
+  z-index: 999;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.social-links-floating a {
+  background-color: white;
+  height: 25px;
+  width: 25px;
+  border-radius: 1em;
+}
+
+/* Hero / Section */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-position: 20% 30%;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  inset: 0;
+}
+
+.hero-content {
+  position: relative;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.hero h1,
+.hero h2 {
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover {
+  background: var(--blue-hover);
+}
+
+/* Generic Section / Container classes */
+section {
+ padding: 2rem 1rem;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 1em;
+}
+
+.mission {
+  margin: auto;
+}
+
+.mission h2 {
+  text-align: center;
+}
+
+/* Gallery (Dogs Page) */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.gallery-item {
+  width: calc(50% - 1rem);
+  background: #ddd;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  padding: 1rem;
+}
+.gallery-item img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+}
+.gallery-item h3 {
+  margin-top: 0.5rem;
+}
+
+/* Modal for dog details */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none; /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal.active {
+  display: flex;
+}
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 6px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+}
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Press Links List */
+.press-links ul {
+  list-style: inside disc;
+  margin-top: 1rem;
+}
+
+/* Support Page Form */
+form.volunteer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+}
+
+form.volunteer-form label {
+  font-weight: bold;
+}
+form.volunteer-form input,
+form.volunteer-form textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Footer (optional if you want a custom footer) */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #eee;
+  margin-top: 2rem;
+}
