@@ -22,60 +22,68 @@
 </head>
 <body>
   <!-- Dynamic Header -->
-  <div id="header"></div>
+  <div id="header"> <div class="navbar">
+    <div class="logo">
+      <img src="images/TheUnstoppableRanchLogo.jpg" style="max-height: 25vh" id="logoImg" alt="Unstoppable Ranch Logo" />
+    </div>
+  </div></div>
 
-  <section class="hero" style="background-image: url('images/hero-support.jpg');">
+<section class="container slideUp">
+  <section class="hero paper" style="background-image: url('images/hero-support.jpg');">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Support Us</h1>
       <p>Every bit of help makes a difference.</p>
+    </section>
     </div>
-  </section>
+</section>
 
-  <section class="container">
-    <h2>Volunteer</h2>
-    <form id="volunteerForm" class="volunteer-form">
-      <label for="vName">Name:</label>
-      <input type="text" id="vName" name="vName" required />
+      <!-- The Mission Section -->
+      <section class="container" id="mission">
+        <div class="hero">
+          <div class="hero-content mission paper center">
+        <h2>The Mission</h2>
+        <p>
+          At The Unstoppable Ranch, our mission is to provide a sanctuary of boundless love and unwavering 
+          support for special needs dogs who, despite facing life's challenges, embody an indomitable spirit. 
+          We believe that every dog, regardless of their physical or emotional obstacles, deserves a chance 
+          at a life filled with compassion, joy, and purpose.
+        </p>
+        <p>
+          Our commitment goes beyond providing a safe haven for these amazing canine companions. We strive 
+          to create an inclusive environment that invites humans to witness and learn from the remarkable 
+          resilience of these extraordinary beings. Through shared experiences, we aim to foster empathy, 
+          understanding, and a deep connection between humans and our unstoppable dogs.
+        </p>
+        <p>
+          This is a place where tears of both sorrow and joy are welcomed, for in every story of struggle, 
+          there is a tale of triumph waiting to be told. We invite you to join us in celebrating the spirit 
+          of these special dogs, who teach us that with love and patience, we can overcome any obstacle 
+          together. Together, we create a community where both humans and dogs inspire each other to live 
+          life to the fullest, proving that the unstoppable force of love knows no bounds.
+        </p>
+        </div>
+        </div>
+      </section>
 
-      <label for="vPhone">Phone Number:</label>
-      <input type="tel" id="vPhone" name="vPhone" required />
-
-      <label for="vLocation">City/State of Residence:</label>
-      <input type="text" id="vLocation" name="vLocation" required />
-
-      <label for="vAvailability">Availability (Days/Times):</label>
-      <input type="text" id="vAvailability" name="vAvailability" required />
-
-      <label for="vExperience">Any Relevant Experience:</label>
-      <textarea id="vExperience" name="vExperience" rows="4"></textarea>
-
-      <button type="submit" class="button">Submit</button>
-    </form>
-  </section>
-
-  <section class="container">
+  <section class="container center">  
     <h2>Donation Links</h2>
-    <ul>
-      <li><a href="https://www.amazon.com/hz/wishlist/ls/29TQMDFEQ67BF/ref=nav_wishlist_lists_2?fbclid=PAZXh0bgNhZW0CMTEAAaa1Vj4XRxdmCLjebKGlZ4g2UhFedeejEFJTruuP82t3KVRJa7BtQayalAE_aem_7FostB6CE84HmXCVyk1vxg" target="_blank">Amazon Wishlist</a></li>
-      <li><a href="https://www.chewy.com/g/dream-fetchers_b121395249?fbclid=PAZXh0bgNhZW0CMTEAAaYw1jmN0S_WpeYuiPS4vdVLbKkWqeicz5hy8JVMr82B8BHyhVxIhOqbeZ0_aem_Y0haZZb9TW2DzR5rzJRF7A" target="_blank">Chewy Wishlist</a></li>
-      <li><a href="https://www.gofundme.com/f/tiny-frenchie-needs-life-saving-surgery?utm_campaign=fp_sharesheet_ai&utm_content=amp8_t4&utm_medium=customer&utm_source=copy_link" target="_blank">GoFundMe</a></li>
-      <li><a href="https://cuddly.com/donate/4914455/the-unstoppable-dogs" target="_blank">CUDDLY Campaign</a></li>
-      <li><a href="https://www.paypal.com/donate/?hosted_button_id=F46DZZ5KCQD72" target="_blank">PayPal</a></li>
-    </ul>
-
-    <h2>Book Link</h2>
-    <p>
-      Check out our book on 
-      <a href="https://www.amazon.com/dp/0578270684/ref=cm_sw_r_api_i_XQD7YYGCTV907RYKXEFE_0" target="_blank">Amazon</a>.
-    </p>
+    Every little bit counts. There are many ways to donate! Got an old amazon gift card lying around? Use it to order something off our wishlist. 
+    If you just want to donate money directly, use PayPal. Please, <a href="/contact.html">contact us</a> and let us know if you experience any issues donating.
+    <div id="donation-links">
+      <a class="pop-button" href="https://www.amazon.com/hz/wishlist/ls/29TQMDFEQ67BF/ref=nav_wishlist_lists_2?fbclid=PAZXh0bgNhZW0CMTEAAaa1Vj4XRxdmCLjebKGlZ4g2UhFedeejEFJTruuP82t3KVRJa7BtQayalAE_aem_7FostB6CE84HmXCVyk1vxg" target="_blank">Amazon Wishlist</a>
+      <a class="pop-button" href="https://www.chewy.com/g/dream-fetchers_b121395249?fbclid=PAZXh0bgNhZW0CMTEAAaYw1jmN0S_WpeYuiPS4vdVLbKkWqeicz5hy8JVMr82B8BHyhVxIhOqbeZ0_aem_Y0haZZb9TW2DzR5rzJRF7A" target="_blank">Chewy Wishlist</a>
+      <a class="pop-button" href="https://www.gofundme.com/f/tiny-frenchie-needs-life-saving-surgery?utm_campaign=fp_sharesheet_ai&utm_content=amp8_t4&utm_medium=customer&utm_source=copy_link" target="_blank">GoFundMe</a>
+      <a class="pop-button" href="https://cuddly.com/donate/4914455/the-unstoppable-dogs" target="_blank">CUDDLY Campaign</a>
+      <a class="pop-button" href="https://www.paypal.com/donate/?hosted_button_id=F46DZZ5KCQD72" target="_blank">PayPal</a>
+    </div>
   </section>
 
   <footer>
     <div id="footer"></div>
     </footer>
-  <script src="js/main.js"></script>
   <script src="js/header.js"></script>
   <script src="js/footer.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

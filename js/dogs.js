@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dogsData.forEach((dog, index) => {
           const item = document.createElement("div");
           item.classList.add("gallery-item");
+          item.classList.add("pop-button");
           item.innerHTML = `
             <img src="${dog.image}" alt="${dog.name}" />
             <h3>${dog.name}</h3>
@@ -33,26 +34,55 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("Error loading dogs.csv:", err));
 
   // 2) Modal Functions
-  function openDogModal(index) {
-    const dog = dogsData[index];
-    dogNameEl.textContent = dog.name || "";
-    dogAgeEl.textContent = dog.age || "";
-    dogBioEl.textContent = dog.bio || "";
 
-    // Press Links if any
-    dogPressLinksEl.innerHTML = "";
-    if (dog.pressLinks && dog.pressLinks.length > 0) {
-      let list = document.createElement("ul");
-      dog.pressLinks.forEach(link => {
-        let li = document.createElement("li");
-        li.innerHTML = `<a href="${link}" target="_blank">${link}</a>`;
-        list.appendChild(li);
-      });
-      dogPressLinksEl.appendChild(list);
-    }
+let currentDogIndex = 0; // Track the currently displayed dog
 
-    dogModal.classList.add("active");
+function openDogModal(index) {
+  currentDogIndex = index; // Update the current dog index
+  const dog = dogsData[index];
+  
+  const dogImageEl = document.getElementById("dogImage");
+  dogImageEl.src = dog.image || "images/default-dog.jpg"; // Use a default image if none is provided
+  dogImageEl.alt = dog.name || "Dog Image";
+
+  dogNameEl.textContent = dog.name || "";
+  dogAgeEl.textContent = dog.age || "";
+  dogBioEl.textContent = dog.bio || "";
+
+  // Press Links if any
+  dogPressLinksEl.innerHTML = "";
+  if (dog.pressLinks && dog.pressLinks.length > 0) {
+    let list = document.createElement("ul");
+    dog.pressLinks.forEach(link => {
+      let li = document.createElement("li");
+      li.innerHTML = `<a href="${link}" class="pop-button center" target="_blank">Read ${dog.name}'s Story</a>`;
+      list.appendChild(li);
+    });
+    dogPressLinksEl.appendChild(list);
   }
+
+  dogModal.classList.add("active");
+}
+
+// Navigate to the previous dog
+function showPreviousDog() {
+  if (currentDogIndex > 0) {
+    currentDogIndex--;
+    openDogModal(currentDogIndex);
+  }
+}
+
+// Navigate to the next dog
+function showNextDog() {
+  if (currentDogIndex < dogsData.length - 1) {
+    currentDogIndex++;
+    openDogModal(currentDogIndex);
+  }
+}
+
+// Add event listeners for navigation buttons
+document.getElementById("prevDog").addEventListener("click", showPreviousDog);
+document.getElementById("nextDog").addEventListener("click", showNextDog);
 
   modalClose.addEventListener("click", () => {
     dogModal.classList.remove("active");
@@ -77,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const ul = document.createElement("ul");
           links.forEach(link => {
             const li = document.createElement("li");
-            li.innerHTML = `<a href="${link.url}" target="_blank">${link.text}</a>`;
+            li.innerHTML = `<a href="${link.url}" class="pop-button center" target="_blank">${link.text}</a>`;
             ul.appendChild(li);
           });
           pressLinksList.appendChild(ul);

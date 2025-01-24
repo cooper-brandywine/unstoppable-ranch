@@ -1,0 +1,25 @@
+/* fonts */
+@font-face {
+    font-family: 'WorkSans';
+    src:url(../fonts/WorkSans-Regular.woff2);
+  }
+  @font-face {
+    font-family: 'WorkSans';
+    src:url(../fonts/WorkSans-ExtraLight.woff2);
+    font-weight:100;
+  }
+  @font-face {
+    font-family: 'WorkSans';
+    src:url(../fonts/WorkSans-Medium.woff2);
+    font-weight:500;
+  }
+  @font-face {
+    font-family: 'WorkSans';
+    src:url(../fonts/WorkSans-Black.woff2);
+    font-weight:900;
+  }
+
+  @font-face {
+    font-family: 'YoungSerif';
+    src:url(../fonts/youngserif-regular.woff);
+  }

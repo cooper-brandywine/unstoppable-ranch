@@ -28,3 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+window.addEventListener("load", () => {
+  // Hide the loading screen
+  const loadingScreen = document.getElementById("loadingScreen");
+  const pageContent = document.getElementById("pageContent");
+
+  if (loadingScreen) {
+    loadingScreen.style.display = "none"; // Remove loading screen
+  }
+
+  if (pageContent) {
+    pageContent.style.display = "block"; // Show the page
+  }
+});
