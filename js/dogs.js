@@ -55,7 +55,7 @@ function openDogModal(index) {
     let list = document.createElement("ul");
     dog.pressLinks.forEach(link => {
       let li = document.createElement("li");
-      li.innerHTML = `<a href="${link}" class="pop-button center" target="_blank">Read ${dog.name}'s Story</a>`;
+      li.innerHTML = `<a href="${link}" class="pop-button" target="_blank">Read ${dog.name}'s Story</a>`;
       list.appendChild(li);
     });
     dogPressLinksEl.appendChild(list);
@@ -107,7 +107,7 @@ document.getElementById("nextDog").addEventListener("click", showNextDog);
           const ul = document.createElement("ul");
           links.forEach(link => {
             const li = document.createElement("li");
-            li.innerHTML = `<a href="${link.url}" class="pop-button center" target="_blank">${link.text}</a>`;
+            li.innerHTML = `<a href="${link.url}" class="pop-button" target="_blank">${link.text}</a>`;
             ul.appendChild(li);
           });
           pressLinksList.appendChild(ul);

@@ -21,6 +21,7 @@ body {
   line-height: 1.5;
   background-color: white;
   color: black;
+  overflow-x: hidden;
 }
 
 button {
@@ -40,7 +41,7 @@ img {
 #header {
   width: 100%;
   position: relative;
-  min-height: 30vh;
+  min-height: 28vh;
 }
 
 .navbar {
@@ -159,19 +160,23 @@ img {
 
 /* Floating Social Links at bottom right */
 .social-links-floating {
-  z-index: 999;
+  z-index: 990;
   position: fixed;
   bottom: 20px;
   right: 20px;
   display: flex;
   flex-direction: column;
   gap: 1em;
+  border: 12px solid white;
+  border-radius: 30px;
+  background-color: white;
+  outline: 4px solid black;
 }
 
 .social-links-floating a {
   background-color: white;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 3em;
 }
 
@@ -267,12 +272,14 @@ section {
   width: 100%;
 }
 .columns div {
-  min-width: 400px;
-  max-width: 500px;
+  min-width: 250px;
+  max-width: 300px;
   padding: 1em;
 }
 
 /* Gallery (Dogs Page) */
+/* check media queries for gallery breakpoints*/
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -294,6 +301,7 @@ section {
 }
 .gallery-item h3 {
   margin-top: 0.5rem;
+  font-size: min(2rem, 5vmin);
 }
 
 /* Modal for dog details */
@@ -386,6 +394,11 @@ section {
   margin-top: 1rem;
 }
 
+#pressLinksList ul li a {
+  line-height: 2.25rem;
+  margin: 8px 0px;
+}
+
 /* Support Page Form */
 form.volunteer-form {
   display: flex;
@@ -411,7 +424,7 @@ form.volunteer-form textarea {
   display: none;
   position: fixed;
   width: 95vw;
-  height: 95vh;
+  height: 62.5vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -441,8 +454,9 @@ form.volunteer-form textarea {
 
 /* Footer (optional if you want a custom footer) */
 footer {
+  border-top: 5px solid black;
   text-align: center;
-  padding: 1rem;
+  padding: 4rem 1rem 4rem 1rem;
   background: var(--green);
   color: white;
   margin-top: 2rem;
