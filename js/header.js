@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <!-- Logo in the center (could also place it left or right) -->
       <div class="logo">
         <a href="index.html">
-          <img src="images/TheUnstoppableRanchLogo.jpg" id="logoImg" alt="Unstoppable Ranch Logo"/>
+          <img src="images/TheUnstoppableRanchLogo.jpg" style="max-height: 25vh" id="logoImg" alt="Unstoppable Ranch Logo"/>
         </a>
       </div>
 

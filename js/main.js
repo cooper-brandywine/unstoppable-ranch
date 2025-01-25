@@ -29,16 +29,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-window.addEventListener("load", () => {
-  // Hide the loading screen
-  const loadingScreen = document.getElementById("loadingScreen");
-  const pageContent = document.getElementById("pageContent");
+//header stop above footer
+document.addEventListener("DOMContentLoaded", function () {
+  const floatingButtons = document.querySelector(".social-links-floating");
+  const footer = document.getElementById("footer");
 
-  if (loadingScreen) {
-    loadingScreen.style.display = "none"; // Remove loading screen
+  function adjustFloatingButtons() {
+    const footerTop = footer.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (footerTop <= windowHeight) {
+      // If the footer is in view, make the buttons "stop" above the footer
+      const footerOffset = footer.getBoundingClientRect().top + window.scrollY;
+      floatingButtons.style.bottom = `200px`;
+      floatingButtons.style.flexDirection = 'row';
+    } else {
+      // Otherwise, keep them fixed
+      floatingButtons.style.position = "fixed";
+      floatingButtons.style.flexDirection = 'column';
+      floatingButtons.style.bottom = "20px";
+      floatingButtons.style.top = "auto";
+    }
   }
 
-  if (pageContent) {
-    pageContent.style.display = "block"; // Show the page
-  }
+  // Run on scroll and resize
+  window.addEventListener("scroll", adjustFloatingButtons);
+  window.addEventListener("resize", adjustFloatingButtons);
+
+  // Initial check
+  adjustFloatingButtons();
 });

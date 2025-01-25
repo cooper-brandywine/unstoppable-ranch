@@ -160,7 +160,7 @@ img {
 
 /* Floating Social Links at bottom right */
 .social-links-floating {
-  z-index: 990;
+  z-index: 999;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -171,6 +171,12 @@ img {
   border-radius: 30px;
   background-color: white;
   outline: 4px solid black;
+  transition: bottom 500ms;
+}
+
+.social-links-floating.absolute {
+  position: absolute;
+  bottom: auto;
 }
 
 .social-links-floating a {
@@ -178,6 +184,10 @@ img {
   height: 50px;
   width: 50px;
   border-radius: 3em;
+}
+
+.social-links-floating a:hover {
+  transform: translate(1px, 1px);
 }
 
 /* Hero / Section */
@@ -210,7 +220,7 @@ img {
 }
 
 .hero-overlay {
-  background: rgba(0, 0, 0, 0.5);
+  background-color: #00000080;
   position: absolute;
   inset: 0;
   border-radius: 0.5em;
@@ -219,7 +229,6 @@ img {
 .hero-content {
   position: relative;
   padding: 2rem;
-  z-index: 2;
 }
 
 .hero h1,
@@ -459,7 +468,7 @@ footer {
   padding: 4rem 1rem 4rem 1rem;
   background: var(--green);
   color: white;
-  margin-top: 2rem;
+  margin-top: 5rem;
 }
 footer a {
   color: white;

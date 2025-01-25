@@ -1,9 +1,12 @@
 /* variables */
 * {
-
+  --red: #f75252;
   --green: #46ac49;
   --blue: #70cbf7;
+  --orange: #f7a766;
   --blue-hover:#3eb7f4;
+  --indigo: #4269f7;
+  --violet: #b670f7;
   --radius: 1rem;
 
 }
