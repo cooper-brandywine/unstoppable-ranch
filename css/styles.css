@@ -13,6 +13,23 @@
   box-sizing: border-box;
 }
 
+#dogBio::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 15px;
+}
+
+#dogBio::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 8px;
+  border: 4px solid black;
+}
+
+#dogBio::-webkit-scrollbar-thumb {
+  border-radius: var(--radius);
+  background-color: var(--blue);
+  border: 4px solid black;
+}
+
 /* Basic Body / Font */
 body {
   font-family: 'WorkSans';
@@ -22,6 +39,7 @@ body {
   background-color: white;
   color: black;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 button {
@@ -171,7 +189,12 @@ img {
   border-radius: 30px;
   background-color: white;
   outline: 4px solid black;
-  transition: bottom 500ms;
+  transition: opacity 500ms, bottom 500ms;
+  opacity: 0.6;
+}
+
+.social-links-floating:hover {
+  opacity: 1!important;
 }
 
 .social-links-floating.absolute {
@@ -282,7 +305,7 @@ section {
 }
 .columns div {
   min-width: 250px;
-  max-width: 300px;
+  max-width: max(300px, 50%);
   padding: 1em;
 }
 
@@ -295,22 +318,27 @@ section {
   justify-content: space-between;
 }
 .gallery-item {
-  width: calc(33% - 1rem);
   background: white;
   position: relative;
   cursor: pointer;
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.5em;
   border-radius: var(--radius);
 }
 .gallery-item img {
   width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
   display: block;
   border-radius:calc(var(--radius) / 2);
 }
 .gallery-item h3 {
-  margin-top: 0.5rem;
-  font-size: min(2rem, 5vmin);
+  margin-top: min(-3.5rem, -4vmin);
+  font-size: min(2rem, 4vmin);
+  color: white;
+  text-decoration: underline;
+  text-shadow: 2px 2px 0px black;
 }
 
 /* Modal for dog details */
@@ -328,6 +356,8 @@ section {
 
 .modal.active {
   display: flex;
+  background: linear-gradient(45deg, var(--green), var(--blue));
+  animation: 200ms fadeIn;
 }
 
 .modal-content {
@@ -337,16 +367,21 @@ section {
   max-width: 1200px;
   width: 90%;
   position: relative;
+  animation: 750ms slideUp;
 }
 
 .modal-content .img-container {
   height: 40vh;
+  max-width: 40vh;
+  margin: auto;
   overflow: hidden;
   border-radius: var(--radius);
 }
 
 .modal-content img {
-  height: 100%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   display: block;
   margin: 0 auto 1rem auto;
 }
@@ -375,27 +410,32 @@ section {
   background: var(--blue-hover);
 }
 
+.dogInfo {
+  padding: 0rem 3rem;
+}
+
 #prevDog {
   position: absolute;
-  bottom: 0%;
-  left: 1rem;
+  bottom: 50%;
+  left: 0.5rem;
 }
 
 #nextDog {
   position: absolute;
-  bottom: 0%;
-  right: 1rem;
+  bottom: 50%;
+  right: 0.5rem;
 }
 
 #dogBio {
   min-height: 10vh;
-  max-height: 12vh;
-  overflow: scroll;
+  max-height: 12.75vh;
+  overflow-y: scroll;
+  --webkit-overflow-y: scroll;
 }
 
 #dogPressLinks {
   min-height: 10vh;
-  margin-bottom: 10vh;
+  margin-bottom: 0vh;
 }
 
 /* Press Links List */

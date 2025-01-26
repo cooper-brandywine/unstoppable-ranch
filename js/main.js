@@ -42,13 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
       // If the footer is in view, make the buttons "stop" above the footer
       const footerOffset = footer.getBoundingClientRect().top + window.scrollY;
       floatingButtons.style.bottom = `200px`;
-      floatingButtons.style.flexDirection = 'row';
+      floatingButtons.style.opacity = "1";
     } else {
       // Otherwise, keep them fixed
       floatingButtons.style.position = "fixed";
-      floatingButtons.style.flexDirection = 'column';
       floatingButtons.style.bottom = "20px";
       floatingButtons.style.top = "auto";
+      floatingButtons.style.opacity = "0.6";
     }
   }
 

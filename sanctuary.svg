@@ -1,0 +1,54 @@
+<svg
+  width="128"
+  height="128"
+  viewBox="0 0 128 128"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="black"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <!-- House / Sanctuary -->
+  <path
+    d="M 32 50 L 64 20 L 96 50 L 96 100 L 32 100 Z"
+    fill="none"
+  />
+  
+  <!-- Dog Face Container (blue) -->
+  <circle
+    cx="64"
+    cy="75"
+    r="14"
+    fill="#70cbf7"
+  />
+  <!-- Ears -->
+  <path
+    d="M 53 58 L 50 48 L 58 52 Z
+       M 75 58 L 78 48 L 70 52 Z"
+    fill="#70cbf7"
+    stroke="black"
+    stroke-width="2"
+  />
+  <!-- Dog's outline for face -->
+  <circle
+    cx="64"
+    cy="75"
+    r="14"
+    fill="none"
+    stroke="black"
+    stroke-width="2"
+  />
+  <!-- Eyes -->
+  <circle cx="59" cy="73" r="1.5" fill="black" stroke="none" />
+  <circle cx="69" cy="73" r="1.5" fill="black" stroke="none" />
+
+  <!-- Nose/Mouth -->
+  <path
+    d="M 64 75 Q 64 78 62 78 Q 64 78 66 78"
+    stroke="black"
+    stroke-width="2"
+    fill="none"
+    stroke-linecap="round"
+  />
+</svg>

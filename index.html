@@ -51,20 +51,35 @@
     <div class="hero paper" id="dogs">
       <!-- <div class="hero-overlay"></div> -->
       <div class="hero-content">
-        <div class="columns">
-          <div>
-          <h2 class="paper center blue">Meet the Dogs</h2>
-          <p>Explore our Virtual Yearbook and meet the Unstoppable Dogs.</p>
-          </div>
-          <div>
-          <a class="pop-button" href="dogs.html">Dogs Page</a>
-          </div>
+        <h2 class="paper center blue">Read Their Stories</h2>
+        <p>Click or tap on one of the dogs to read their story.</p>
+        <div class="gallery" id="dogsGallery" data-dogs="3">
+          <!-- JavaScript (dogs.js) will insert dog items here -->
         </div>
+        <div><a class="pop-button" href="dogs.html" target="_blank">Meet the Dogs</a></div>
+            <!-- Modal for dog details -->
+            <div class="modal" id="dogModal">
+              <div class="modal-content paper">
+                <span class="close-modal" id="modalClose">&times;</span>
+                  <div class="img-container">
+                    <img id="dogImage" src="" alt="Dog Image" />
+                  </div>
+                <button id="prevDog" class="pop-button">&laquo;</button>
+                <button id="nextDog" class="pop-button">&raquo;</button>
+                <div class="dogInfo"> 
+                  <h2 id="dogName"></h2>
+                  <p><strong>Age:</strong> <span id="dogAge"></span></p>
+                  <p id="dogBio"></p>
+                </div>
+                <div id="dogPressLinks" style="margin-top:1rem;"></div>
+          
+              </div>
+            </div>
+
       </div>
     </div>
 
-    <div class="hero paper" id="ranch">
-      <!-- <div class="hero-overlay"></div> -->
+    <!-- <div class="hero paper" id="ranch">
       <div class="hero-content">
         <div class="columns">
           <div>
@@ -74,13 +89,14 @@
           <div><a class="pop-button" href="ranch.html" target="_blank">Ranch Page</a></div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="hero paper" id="support">
       <!-- <div class="hero-overlay"></div> -->
       <div class="hero-content">
         <div class="columns">
-          <div><h2 class="paper center blue">Support Us</h2>
+          <object type="image/svg+xml" data="unstoppableranch-icon.svg"></object>
+          <div><h2 class="paper center blue">Support the Ranch</h2>
           <p>Your support makes this possible. Help us take care of the pups. Find our current fundraising links and a volunteer form on our Support Page.</p>
           </div>
           <div>
@@ -126,6 +142,7 @@
   <script src="js/header.js"></script>
   <script src="js/footer.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/dogs.js"></script>
   <!-- <script src="js/donate.js"></script> -->
 </body>
 </html>

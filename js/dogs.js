@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const dogAgeEl = document.getElementById("dogAge");
   const dogBioEl = document.getElementById("dogBio");
   const dogPressLinksEl = document.getElementById("dogPressLinks");
+  
+  // NEW: Read data-dogs attribute to decide how many dogs to display
+  const limitAttr = gallery?.getAttribute("data-dogs");
+  const limit = limitAttr ? parseInt(limitAttr, 10) : null;
 
   let dogsData = [];
 
@@ -15,12 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(csvText => {
       dogsData = parseDogsCSV(csvText);
 
+      // If we have a valid limit > 0, shuffle and then slice the array
+      if (limit && limit > 0 && dogsData.length > limit) {
+        dogsData.sort(() => Math.random() - 0.5); // Shuffle
+        dogsData = dogsData.slice(0, limit);      // Take only 'limit' dogs
+      }
+
       // Build the gallery on the page
       if (gallery && dogsData.length > 0) {
+        gallery.innerHTML = ""; // Clear any existing items
         dogsData.forEach((dog, index) => {
           const item = document.createElement("div");
-          item.classList.add("gallery-item");
-          item.classList.add("pop-button");
+          item.classList.add("gallery-item", "pop-button");
           item.innerHTML = `
             <img src="${dog.image}" alt="${dog.name}" />
             <h3>${dog.name}</h3>
@@ -33,56 +43,58 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Error loading dogs.csv:", err));
 
+  // -------------------------
   // 2) Modal Functions
-
-let currentDogIndex = 0; // Track the currently displayed dog
-
-function openDogModal(index) {
-  currentDogIndex = index; // Update the current dog index
-  const dog = dogsData[index];
+  // -------------------------
   
-  const dogImageEl = document.getElementById("dogImage");
-  dogImageEl.src = dog.image || "images/default-dog.jpg"; // Use a default image if none is provided
-  dogImageEl.alt = dog.name || "Dog Image";
+  let currentDogIndex = 0; // Track the currently displayed dog
 
-  dogNameEl.textContent = dog.name || "";
-  dogAgeEl.textContent = dog.age || "";
-  dogBioEl.textContent = dog.bio || "";
+  function openDogModal(index) {
+    currentDogIndex = index; // Update the current dog index
+    const dog = dogsData[index];
 
-  // Press Links if any
-  dogPressLinksEl.innerHTML = "";
-  if (dog.pressLinks && dog.pressLinks.length > 0) {
-    let list = document.createElement("ul");
-    dog.pressLinks.forEach(link => {
-      let li = document.createElement("li");
-      li.innerHTML = `<a href="${link}" class="pop-button" target="_blank">Read ${dog.name}'s Story</a>`;
-      list.appendChild(li);
-    });
-    dogPressLinksEl.appendChild(list);
+    const dogImageEl = document.getElementById("dogImage");
+    dogImageEl.src = dog.image || "images/default-dog.jpg"; // Use a default if none provided
+    dogImageEl.alt = dog.name || "Dog Image";
+
+    dogNameEl.textContent = dog.name || "";
+    dogAgeEl.textContent = dog.age || "";
+    dogBioEl.textContent = dog.bio || "";
+
+    // Press Links if any
+    dogPressLinksEl.innerHTML = "";
+    if (dog.pressLinks && dog.pressLinks.length > 0) {
+      const list = document.createElement("ul");
+      dog.pressLinks.forEach(link => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="${link}" class="pop-button" target="_blank">Read ${dog.name}'s Story</a>`;
+        list.appendChild(li);
+      });
+      dogPressLinksEl.appendChild(list);
+    }
+
+    dogModal.classList.add("active");
   }
 
-  dogModal.classList.add("active");
-}
-
-// Navigate to the previous dog
-function showPreviousDog() {
-  if (currentDogIndex > 0) {
-    currentDogIndex--;
-    openDogModal(currentDogIndex);
+  // Navigate to the previous dog
+  function showPreviousDog() {
+    if (currentDogIndex > 0) {
+      currentDogIndex--;
+      openDogModal(currentDogIndex);
+    }
   }
-}
 
-// Navigate to the next dog
-function showNextDog() {
-  if (currentDogIndex < dogsData.length - 1) {
-    currentDogIndex++;
-    openDogModal(currentDogIndex);
+  // Navigate to the next dog
+  function showNextDog() {
+    if (currentDogIndex < dogsData.length - 1) {
+      currentDogIndex++;
+      openDogModal(currentDogIndex);
+    }
   }
-}
 
-// Add event listeners for navigation buttons
-document.getElementById("prevDog").addEventListener("click", showPreviousDog);
-document.getElementById("nextDog").addEventListener("click", showNextDog);
+  // Add event listeners for navigation buttons
+  document.getElementById("prevDog").addEventListener("click", showPreviousDog);
+  document.getElementById("nextDog").addEventListener("click", showNextDog);
 
   modalClose.addEventListener("click", () => {
     dogModal.classList.remove("active");
@@ -95,7 +107,9 @@ document.getElementById("nextDog").addEventListener("click", showNextDog);
     }
   });
 
+  // -------------------------
   // 3) Fetch Press Links from press-links.csv
+  // -------------------------
   const pressLinksList = document.getElementById("pressLinksList");
   if (pressLinksList) {
     fetch("press-links.csv")
@@ -129,9 +143,8 @@ document.getElementById("nextDog").addEventListener("click", showNextDog);
  */
 function parseDogsCSV(csvText) {
   const lines = csvText.split("\n").map(l => l.trim()).filter(l => l);
-
-  // Remove header row (assuming the first line is the header)
-  const header = lines.shift();
+  // Remove header row
+  lines.shift(); // assume first line is a header
 
   let results = [];
 
@@ -167,9 +180,8 @@ function parseDogsCSV(csvText) {
  */
 function parsePressLinksCSV(csvText) {
   const lines = csvText.split("\n").map(l => l.trim()).filter(l => l);
-
   // Remove header row
-  const header = lines.shift();
+  lines.shift(); // assume first line is a header
 
   return lines.map(line => {
     const [url, text] = line.split(",", 2);
@@ -178,8 +190,8 @@ function parsePressLinksCSV(csvText) {
 }
 
 /**
- * A very simplified CSV line parser that attempts to handle
- * quoted fields vs. unquoted fields.
+ * A simplified CSV line parser to handle
+ * quoted vs. unquoted fields.
  */
 function parseCSVLine(line) {
   let result = [];
@@ -203,7 +215,7 @@ function parseCSVLine(line) {
     result.push(current.trim());
   }
 
-  // Remove surrounding quotes
+  // Remove surrounding quotes, if any
   return result.map(val => {
     if (val.startsWith('"') && val.endsWith('"')) {
       return val.slice(1, -1);

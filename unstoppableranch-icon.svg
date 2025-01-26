@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 317.22067 376.43">
+   <style>
+    .fadeIn {
+      animation: fadeIn 1s forwards;
+    }
+    
+    @keyframes fadeIn {
+    from {opacity: 0; transform:translateY(-100px);}
+    to { opacity: 1; transform:translateY(0px);}
+    }
+
+  .draw {
+    animation: draw 1s forwards;
+  }
+
+  @keyframes draw {
+    from {opacity: 0;}
+    to { opacity: 1;}
+    }
+ </style>
+ <g>
+    <polygon points="19.99986 356.43003 19.99986 95.01108 158.61022 26.8021 297.22057 95.01108 297.22057 356.43003 19.99986 356.43003" style="fill: #fff;"/>
+    <path class="" d="M158.61034,49.09281l118.61029,58.36731v228.96991H40.00005V107.46012l118.61029-58.36731M158.61034,4.51206L.00005,82.56302v293.867h317.22057V82.56302L158.61034,4.51206h0Z"/>
+  </g>
+  <g class="fadeIn">
+    <path d="M131.68547,213.67717c-4.75497,21.10006-14.76784,40.75484-41.07312,52.46367-20.16371,8.97515-.08411,49.18778,20.9571,38.76432,25.46862-12.61672,53.92802-14.25807,86.80653.09148,21.48287,9.37604,41.73035-30.39314,21.31495-38.58559-22.86823-9.17674-38.38903-25.92685-41.8671-53.14918-2.42194-18.95604-41.94732-18.18234-46.13835.4153Z" style="fill: #70cbf7;"/>
+    <ellipse cx="90.89475" cy="205.37979" rx="22.60524" ry="34.43885" style="fill: #70cbf7;"/>
+    <ellipse cx="132.6048" cy="158.02716" rx="22.60524" ry="34.43885" style="fill: #70cbf7;"/>
+    <ellipse cx="181.26653" cy="159.49873" rx="22.60524" ry="34.43885" style="fill: #70cbf7;"/>
+    <ellipse cx="222.74365" cy="209.89756" rx="22.60524" ry="34.43885" style="fill: #70cbf7;"/>
+  </g>
+</svg>
