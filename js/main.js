@@ -59,3 +59,34 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial check
   adjustFloatingButtons();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Select all <object> elements with data-lazy-svg attribute
+  const lazySVGs = document.querySelectorAll('object[data-lazy-svg]');
+
+  // Create a single Intersection Observer
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const obj = entry.target; // The <object> that became visible
+
+        // Grab the actual path from 'data-lazy-svg'
+        const svgPath = obj.getAttribute('data-lazy-svg');
+        if (svgPath) {
+          // Assign it to the real 'data' attribute to start loading
+          obj.data = svgPath;
+
+          // Stop observing once it's loaded
+          obs.unobserve(obj);
+        }
+      }
+    });
+  }, { 
+    threshold: 0.1 // Adjust as needed
+  });
+
+  // Observe each lazy SVG
+  lazySVGs.forEach(svgObj => {
+    observer.observe(svgObj);
+  });
+});

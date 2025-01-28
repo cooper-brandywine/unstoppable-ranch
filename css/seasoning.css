@@ -3,26 +3,32 @@
 
 .pop-button {
   display: block;
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: 900;
   color: black;
+  background: #fff;
   text-decoration: none;
   border: 4px solid black;
-  padding: 0 1rem;
-  line-height: calc(2em + 6px);
-  border-radius: 1rem;
-  margin: 8px auto;
+  border-radius: var(--radius);
+  margin: 10px auto;
+  transition: all 100ms ease-in-out;
 }
 
 .pop-button:hover {
+  background-color: var(--blue);
   box-shadow: 2.5px 5px 0px black;
-  transform: translate(-2.5px, -5px)!important;
+  transform: translate(-2.5px, -5px) !important;
+}
+
+.pop-button:active {
+  box-shadow: 0px 0px 0px black;
+  transform: translate(1.25px, 2.5px) !important;
+  transition: transform 10ms ease-in, box-shadow 10ms ease-in;
 }
 
 a.pop-button {
-  margin: 8px auto;
-  max-width: 300px;
-  min-width: fit-content;
+  width: fit-content;
+  padding: 0.5rem 1rem;
 }
 
 /* flat paper effect */
@@ -41,4 +47,8 @@ a.pop-button {
 
 ul {
   list-style-type: none;
+}
+
+.one-hundred {
+  width: 100%;
 }

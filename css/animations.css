@@ -2,6 +2,12 @@
 .slideDown {animation: 500ms slideDown}
 .slideLeft {animation: 500ms slideLeft}
 .fadeIn {animation: 500ms fadeIn}
+.spin:hover {animation: 250MS spin}
+
+@keyframes spin {
+    from{rotate:0deg;}
+    to{rotate:180deg;}
+}
 
 @keyframes slideUp {
     from {transform: translateY(5vh)}

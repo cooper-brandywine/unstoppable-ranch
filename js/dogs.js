@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dogAgeEl = document.getElementById("dogAge");
   const dogBioEl = document.getElementById("dogBio");
   const dogPressLinksEl = document.getElementById("dogPressLinks");
-  
+
   // NEW: Read data-dogs attribute to decide how many dogs to display
   const limitAttr = gallery?.getAttribute("data-dogs");
   const limit = limitAttr ? parseInt(limitAttr, 10) : null;
@@ -31,8 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
         dogsData.forEach((dog, index) => {
           const item = document.createElement("div");
           item.classList.add("gallery-item", "pop-button");
+          item.style.backgroundImage = `url(${dog.image})`;
           item.innerHTML = `
-            <img src="${dog.image}" alt="${dog.name}" />
+           
             <h3>${dog.name}</h3>
           `;
           // On click, open modal
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------
   // 2) Modal Functions
   // -------------------------
-  
+
   let currentDogIndex = 0; // Track the currently displayed dog
 
   function openDogModal(index) {
@@ -67,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const list = document.createElement("ul");
       dog.pressLinks.forEach(link => {
         const li = document.createElement("li");
-        li.innerHTML = `<a href="${link}" class="pop-button" target="_blank">Read ${dog.name}'s Story</a>`;
+        li.innerHTML = `<a href="${link}" class="pop-button" target="_blank">${dog.name}'s Story</a>`;
         list.appendChild(li);
       });
       dogPressLinksEl.appendChild(list);
