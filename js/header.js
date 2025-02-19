@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!header) return;
 
   header.innerHTML = `
+    <div class="top-banner"> The Unstoppable Ranch is a 501(c)(3) Organization</div>
     <div class="navbar">
       <!-- Logo in the center (could also place it left or right) -->
       <div class="logo">
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <li><a href="support.html">Support</a></li>
         <li><a href="volunteer.html">Volunteer</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
       </ul>
     </nav>
 
@@ -51,15 +53,15 @@ document.addEventListener("DOMContentLoaded", function () {
     menuIcon.classList.toggle("active");
   });
 
-  // Highlight the current page link
-  const navLinks = document.querySelectorAll("nav a");
-  const currentPath = window.location.pathname.split("/").pop(); // Get current file name
+// Highlight the current page link
+const navLinks = document.querySelectorAll("nav a");
+const currentPath = window.location.pathname.split("/").pop() || "index.html"; // Default to "index.html" if empty ("/")
 
-  navLinks.forEach(link => {
+navLinks.forEach(link => {
     if (link.getAttribute("href") === currentPath) {
-      link.classList.add("current");
+        link.classList.add("current");
     }
-  });
+});
     // // Change the logo for mobile view
     // const logoImg = document.getElementById("logoImg");
 

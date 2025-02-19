@@ -39,6 +39,12 @@ img {
 }
 
 /* Header / Nav */
+
+.top-banner{
+  text-align: center;
+  background-color: var(--blue);
+  border-bottom: 5px solid black;
+}
 #header {
   width: 100%;
   position: relative;
@@ -115,6 +121,7 @@ img {
 
 .main-nav ul {
   list-style: none;
+  margin-bottom: 1rem;
 }
 
 .main-nav li {
@@ -253,10 +260,13 @@ img {
   padding: 2rem;
 }
 
+.hero-content h1, .hero-content h2 {
+  font-size: 3rem;
+}
+
 .hero-content .paper {
   margin-bottom: 1rem;
 }
-
 
 
 /* Buttons */
@@ -328,6 +338,7 @@ section {
   text-align: center;
   padding: 0em;
   background-size: cover;
+  background-position: center;
 }
 
 /* .gallery-item img {
@@ -374,6 +385,41 @@ section {
   width: 90%;
   position: relative;
   animation: 750ms slideUp;
+  min-height: 80vh; /* Ensures a good baseline height */
+  display: flex;
+  flex-direction: column;
+}
+
+#dogModal .modal-content {
+  margin:auto!important;
+}
+
+.img-container {
+  flex: 0 0 40%;    /* Reserve 40% of modal height for the image */
+  max-height: 40vh;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.dogInfo {
+  flex: 1;          /* Fills remaining space */
+  min-height: 30vh; /* Stable area for the text */
+  overflow-y: auto;
+  padding: 1rem 0rem;
+}
+
+#dogPressLinks {
+  flex: 0 0 8vh;  /* Fixed height: won't grow or shrink even if content changes */
+}
+
+/* .modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius);
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  animation: 750ms slideUp;
 }
 
 .modal-content .img-container {
@@ -382,14 +428,14 @@ section {
   max-width: min(100%, 600px);
   overflow: hidden;
   border-radius: var(--radius);
-}
+} */
 
 .modal-content img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  object-position: center;
   display: block;
-  margin: 0 auto 1rem auto;
 }
 
 .close-modal {
@@ -406,20 +452,23 @@ section {
 }
 */
 
-#dogPressLinks {
-  min-height: 10vh;
+
+#dogPressLinks .pop-button {
+  margin: 0 auto;
 }
 
 #prevDog {
   position: absolute;
-  bottom: 2.25rem;
+  margin: 0;
+  bottom: 2rem;
   left: 2rem;
   padding: 0.75rem;
 }
 
 #nextDog {
   position: absolute;
-  bottom: 2.25rem;
+  margin: 0;
+  bottom: 2rem;
   right: 2rem;
   padding: 0.75rem;
 }
@@ -428,7 +477,6 @@ section {
   font-size: 1.25rem;
   min-height: 10dvh;
   max-height: 20dvh;
-  margin-bottom: 0.5rem;
   overflow-y: scroll;
   --webkit-overflow-y: scroll;
 }
@@ -483,6 +531,10 @@ form.volunteer-form textarea {
 
 form.volunteer-form input {
   padding: 0.5rem 1rem;
+}
+
+#vSubmit {
+  padding: 1rem;
 }
 
 /* Donate popup */
