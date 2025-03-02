@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dogModal = document.getElementById("dogModal");
   const modalClose = document.getElementById("modalClose");
   const dogNameEl = document.getElementById("dogName");
-  const dogAgeEl = document.getElementById("dogAge");
   const dogBioEl = document.getElementById("dogBio");
   const dogPressLinksEl = document.getElementById("dogPressLinks");
 
@@ -59,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
     dogImageEl.alt = dog.name || "Dog Image";
 
     dogNameEl.textContent = dog.name || "";
-    dogAgeEl.textContent = dog.age || "";
     dogBioEl.textContent = dog.bio || "";
 
     // Press Links if any
@@ -139,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /**
  * Simple CSV parser for dog data:
- * Expects columns: name, age, bio, image, pressLinks
+ * Expects columns: name, bio, image, pressLinks
  * pressLinks can be semicolon-separated
  */
 function parseDogsCSV(csvText) {
@@ -153,10 +151,9 @@ function parseDogsCSV(csvText) {
     const columns = parseCSVLine(line);
 
     const name = columns[0] || "";
-    const age = columns[1] || "";
-    const bio = columns[2] || "";
-    const image = columns[3] || "images/default-dog.jpg";
-    const pressLinksRaw = columns[4] || "";
+    const bio = columns[1] || "";
+    const image = columns[2] || "images/default-dog.jpg";
+    const pressLinksRaw = columns[3] || "";
 
     let pressLinks = [];
     if (pressLinksRaw) {
@@ -165,7 +162,6 @@ function parseDogsCSV(csvText) {
 
     results.push({
       name,
-      age,
       bio,
       image,
       pressLinks
