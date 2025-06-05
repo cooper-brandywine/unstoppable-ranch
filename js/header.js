@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <li><a href="volunteer.html">Volunteer</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="merch.html">Merch</a></li>
       </ul>
     </nav>
 
