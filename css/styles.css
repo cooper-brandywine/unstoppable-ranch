@@ -96,7 +96,7 @@ img {
   max-width: 600px;
 }
 
-.donate-now a {
+.buttons a, .donate-now a {
   color: black;
   text-decoration: none;
 }

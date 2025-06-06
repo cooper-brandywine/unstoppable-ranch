@@ -19,11 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <span></span>
       </div>
       
-      <div class="shop-now">
-        <a class="pop-button" href="/merch">Shop</a>
-      </div>
-      <div class="donate-now">
-        <a class="pop-button" href="https://www.paypal.com/donate/?hosted_button_id=F46DZZ5KCQD72" target="_blank">Donate</a>
+      <div class="buttons">
+        <a class="pop-button" id="shop" href="/merch">Shop</a>
+        <a class="pop-button" id="donate" href="https://www.paypal.com/donate/?hosted_button_id=F46DZZ5KCQD72" target="_blank">Donate</a>
       </div>
     </div>
 
