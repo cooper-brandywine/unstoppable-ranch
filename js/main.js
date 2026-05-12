@@ -170,4 +170,88 @@ document.addEventListener("DOMContentLoaded", () => {
       showRanchGalleryImage(activeRanchGalleryIndex + 1);
     });
   }
+
+  /* ---------------------------------------
+   * 5) Ranch page video controls
+   * ------------------------------------- */
+  const ranchVideoPlayer = document.querySelector("[data-ranch-video-player]");
+
+  if (ranchVideoPlayer) {
+    const ranchVideo = ranchVideoPlayer.querySelector("[data-ranch-video]");
+    const ranchVideoToggle = ranchVideoPlayer.querySelector("[data-ranch-video-toggle]");
+    const ranchVideoMute = ranchVideoPlayer.querySelector("[data-ranch-video-mute]");
+    const ranchVideoSeek = ranchVideoPlayer.querySelector("[data-ranch-video-seek]");
+    const ranchVideoCurrent = ranchVideoPlayer.querySelector("[data-ranch-video-current]");
+    const ranchVideoDuration = ranchVideoPlayer.querySelector("[data-ranch-video-duration]");
+
+    function formatVideoTime(seconds) {
+      if (!Number.isFinite(seconds)) return "0:00";
+
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = Math.floor(seconds % 60).toString().padStart(2, "0");
+      return `${minutes}:${remainingSeconds}`;
+    }
+
+    function updateRanchVideoControls() {
+      if (!ranchVideo) return;
+
+      const duration = ranchVideo.duration || 0;
+      const currentTime = ranchVideo.currentTime || 0;
+
+      if (ranchVideoCurrent) ranchVideoCurrent.textContent = formatVideoTime(currentTime);
+      if (ranchVideoDuration) ranchVideoDuration.textContent = formatVideoTime(duration);
+      if (ranchVideoSeek && duration > 0) {
+        ranchVideoSeek.value = String((currentTime / duration) * 100);
+      }
+    }
+
+    function updateRanchVideoButtonState() {
+      if (!ranchVideo || !ranchVideoToggle || !ranchVideoMute) return;
+
+      ranchVideoToggle.textContent = ranchVideo.paused ? "Play" : "Pause";
+      ranchVideoToggle.setAttribute("aria-label", ranchVideo.paused ? "Play video" : "Pause video");
+      ranchVideoMute.textContent = ranchVideo.muted ? "Muted" : "Sound";
+      ranchVideoMute.setAttribute("aria-label", ranchVideo.muted ? "Unmute video" : "Mute video");
+    }
+
+    ranchVideoToggle?.addEventListener("click", () => {
+      if (!ranchVideo) return;
+
+      if (ranchVideo.paused) {
+        ranchVideo.play();
+      } else {
+        ranchVideo.pause();
+      }
+    });
+
+    ranchVideo?.addEventListener("click", () => {
+      if (ranchVideo.paused) {
+        ranchVideo.play();
+      } else {
+        ranchVideo.pause();
+      }
+    });
+
+    ranchVideoMute?.addEventListener("click", () => {
+      if (!ranchVideo) return;
+
+      ranchVideo.muted = !ranchVideo.muted;
+      updateRanchVideoButtonState();
+    });
+
+    ranchVideoSeek?.addEventListener("input", () => {
+      if (!ranchVideo || !ranchVideo.duration) return;
+
+      ranchVideo.currentTime = (Number(ranchVideoSeek.value) / 100) * ranchVideo.duration;
+    });
+
+    ranchVideo?.addEventListener("loadedmetadata", updateRanchVideoControls);
+    ranchVideo?.addEventListener("timeupdate", updateRanchVideoControls);
+    ranchVideo?.addEventListener("play", updateRanchVideoButtonState);
+    ranchVideo?.addEventListener("pause", updateRanchVideoButtonState);
+    ranchVideo?.addEventListener("ended", updateRanchVideoButtonState);
+
+    updateRanchVideoButtonState();
+    updateRanchVideoControls();
+  }
 });

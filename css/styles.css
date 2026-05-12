@@ -470,6 +470,91 @@ section {
   text-shadow: 2px 2px 0px #333;
 }
 
+/* Ranch Page Video */
+.ranch-video {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 420px);
+  gap: 1.25rem;
+  align-items: center;
+  margin: 1.5rem auto 2rem;
+  padding: 1rem;
+  background: var(--orange);
+}
+
+.ranch-video-copy {
+  padding: 1rem;
+  text-align: left;
+}
+
+.ranch-video-copy h2 {
+  font-family: 'YoungSerif';
+  font-size: clamp(2.15rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.ranch-video-player {
+  overflow: hidden;
+  border: 5px solid black;
+  border-radius: var(--radius);
+  background: black;
+  box-shadow: 4px 4px 0 black;
+}
+
+.ranch-video-player video {
+  width: 100%;
+  max-height: min(72vh, 760px);
+  aspect-ratio: 9 / 16;
+  display: block;
+  object-fit: contain;
+  background: black;
+}
+
+.ranch-video-controls {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.65rem;
+  border-top: 5px solid black;
+  background: white;
+}
+
+.ranch-video-button {
+  min-width: 4.5rem;
+  min-height: 2.5rem;
+  padding: 0.35rem 0.65rem;
+  border: 3px solid black;
+  border-radius: calc(var(--radius) / 2);
+  background: white;
+  color: black;
+  cursor: pointer;
+  font-family: 'WorkSans';
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.ranch-video-button:hover,
+.ranch-video-button:focus-visible {
+  background: var(--blue);
+}
+
+.ranch-video-progress-label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.45rem;
+  align-items: center;
+  min-width: 0;
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
+.ranch-video-progress-label input {
+  width: 100%;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+
 /* Ranch Page Gallery */
 .ranch-gallery {
   margin: 2rem 0;
@@ -560,6 +645,37 @@ section {
   border-radius: calc(var(--radius) / 3);
   object-fit: cover;
   object-position: center;
+}
+
+@media (max-width: 820px) {
+  .ranch-video {
+    grid-template-columns: 1fr;
+  }
+
+  .ranch-video-copy {
+    padding: 0.25rem 0.25rem 0;
+    text-align: center;
+  }
+
+  .ranch-video-player {
+    max-width: min(100%, 430px);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .ranch-video {
+    padding: 0.75rem;
+  }
+
+  .ranch-video-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ranch-video-progress-label {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
 }
 
 /* Modal for dog details */

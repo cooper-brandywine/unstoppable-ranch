@@ -39,6 +39,30 @@
         <h1>The Ranch</h1>
       </div>
     </section>
+    <section class="ranch-video paper" aria-labelledby="ranch-video-title">
+      <div class="ranch-video-copy">
+        <h2 id="ranch-video-title">Welcome To The Ranch</h2>
+      </div>
+      <div class="ranch-video-player" data-ranch-video-player>
+        <video
+          data-ranch-video
+          playsinline
+          preload="metadata"
+        >
+          <source src="videos/the-ranch.mp4" type="video/mp4" />
+          Your browser does not support this video.
+        </video>
+        <div class="ranch-video-controls" aria-label="Ranch video controls">
+          <button class="ranch-video-button" type="button" data-ranch-video-toggle aria-label="Play video">Play</button>
+          <label class="ranch-video-progress-label" aria-label="Video progress">
+            <span data-ranch-video-current>0:00</span>
+            <input data-ranch-video-seek type="range" min="0" max="100" value="0" step="0.1" />
+            <span data-ranch-video-duration>0:00</span>
+          </label>
+          <button class="ranch-video-button" type="button" data-ranch-video-mute aria-label="Mute video">Sound</button>
+        </div>
+      </div>
+    </section>
     <p>
      The Unstoppable Ranch, nestled in beautiful Temecula, California, is a sanctuary built for some of the most vulnerable, forgotten, and extraordinary dogs in the world. Here, disabled dogs who have survived abuse, abandonment, and unthinkable hardship are finally given the safety, love, and dignity they always deserved. And in the most beautiful turn of all, the dogs who once needed saving now help heal humans through their courage, resilience, and extraordinary spirit. This is more than a sanctuary. It is a place of second chances, deep healing, and hope. Here, love rebuilds what the world tried to destroy. If you want to learn more and understand more about our mission, we strongly encourage you to reach out via our <a href="/contact"> contact page</a> or social media and come meet the dogs. 
     </p>
