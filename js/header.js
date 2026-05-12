@@ -6,23 +6,21 @@ document.addEventListener("DOMContentLoaded", function () {
   header.innerHTML = `
     <div class="top-banner"> The Unstoppable Ranch is a 501(c)(3) Organization</div>
     <div class="navbar">
-      <!-- Logo in the center (could also place it left or right) -->
-      <div class="logo">
-        <a href="index.html">
-          <img src="images/TheUnstoppableRanchLogo.jpg" style="max-height: 25vh" id="logoImg" alt="Unstoppable Ranch Logo"/>
-        </a>
-      </div>
-
       <div class="menu-icon" id="menuIcon" aria-label="Open Menu">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      
-      <div class="buttons">
-        <a class="pop-button" id="shop" href="/merch">Shop</a>
-        <a class="pop-button" id="donate" href="https://www.paypal.com/donate/?hosted_button_id=F46DZZ5KCQD72" target="_blank">Donate</a>
+
+      <a class="pop-button header-action" id="shop" href="/merch">Shop</a>
+
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/TheUnstoppableRanchLogo.jpg" id="logoImg" alt="Unstoppable Ranch Logo"/>
+        </a>
       </div>
+
+      <a class="pop-button header-action" id="donate" href="https://www.paypal.com/donate/?hosted_button_id=F46DZZ5KCQD72" target="_blank">Donate</a>
     </div>
 
     <nav class="main-nav" id="mainNav">
@@ -80,4 +78,3 @@ navLinks.forEach(link => {
     // updateLogo();
     // window.addEventListener("resize", updateLogo);
 });
-

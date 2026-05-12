@@ -48,39 +48,57 @@ img {
 #header {
   width: 100%;
   position: relative;
-  min-height: 28dvh;
 }
 
 .navbar {
   max-width: 1200px;
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-areas: "menu logo shop donate";
+  gap: 0.5rem;
   align-items: center;
   background-color: white;
-  padding: 1rem 1rem;
+  padding: 0.75rem 0.75rem 1rem;
 }
 
 .menu-icon {
-  display: inline-block;
+  grid-area: menu;
+  justify-self: start;
+  align-self: center;
+  display: block;
   cursor: pointer;
   width: 30px;
-  height: 22px;
+  height: 2.5rem;
   position: relative;
-  margin: 1rem;
+  margin: 0;
 }
 
 .menu-icon span {
   background-color: black;
   display: block;
   height: 4px;
-  margin: 4px 0;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
   transition: 0.4s;
 }
 
+.menu-icon span:nth-child(1) {
+  top: 9px;
+}
+
+.menu-icon span:nth-child(2) {
+  top: 18px;
+}
+
+.menu-icon span:nth-child(3) {
+  top: 27px;
+}
+
 .menu-icon.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(9px) rotate(45deg);
 }
 
 .menu-icon.active span:nth-child(2) {
@@ -88,17 +106,45 @@ img {
 }
 
 .menu-icon.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+.logo {
+  grid-area: logo;
+  justify-self: center;
+  line-height: 0;
 }
 
 .logo img {
   width: 100%;
-  max-width: 600px;
+  max-width: min(420px, 42vw);
+  max-height: 110px !important;
+  object-fit: contain;
 }
 
 .buttons a, .donate-now a {
   color: black;
   text-decoration: none;
+}
+
+.header-action {
+  width: 5.5rem;
+  margin: 0;
+  padding: 0.45rem 0.25rem;
+  align-self: center;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+#shop {
+  grid-area: shop;
+}
+
+#donate {
+  grid-area: donate;
 }
 
 /* Main Nav Styles */
@@ -149,9 +195,39 @@ img {
 @media (min-width: 768px) {
 
   /* Desktop Nav */
+  .navbar {
+    grid-template-columns: minmax(8rem, 1fr) auto minmax(8rem, 1fr);
+    grid-template-areas: "shop logo donate";
+    gap: 1.25rem;
+    padding: 1rem;
+  }
+
+  .logo {
+    grid-area: logo;
+  }
+
+  .logo img {
+    max-width: min(520px, 45vw);
+    max-height: 150px !important;
+  }
+
   .menu-icon {
     display: none;
     /* Hide hamburger on desktop */
+  }
+
+  .header-action {
+    width: 8rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+  }
+
+  #shop {
+    justify-self: end;
+  }
+
+  #donate {
+    justify-self: start;
   }
 
   .main-nav {
@@ -169,6 +245,26 @@ img {
   .main-nav li {
     margin: 0 0.5rem;
     padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    grid-template-areas: "menu logo shop donate";
+    gap: 0.45rem;
+    padding-inline: 0.5rem;
+  }
+
+  .logo img {
+    max-width: min(230px, 38vw);
+    max-height: 70px !important;
+  }
+
+  .header-action {
+    width: clamp(4.4rem, 18vw, 5.5rem);
+    padding: 0.35rem 0.2rem;
+    font-size: clamp(0.78rem, 3.3vw, 0.95rem);
   }
 }
 
