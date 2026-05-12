@@ -130,4 +130,44 @@ document.addEventListener("DOMContentLoaded", () => {
       if (svgPath) obj.data = svgPath;
     });
   }
+
+  /* ---------------------------------------
+   * 4) Ranch page gallery
+   * ------------------------------------- */
+  const ranchGalleryImage = document.getElementById("ranchGalleryImage");
+  const ranchGalleryThumbs = Array.from(document.querySelectorAll("[data-ranch-gallery-thumb]"));
+  const ranchGalleryPrev = document.querySelector("[data-ranch-gallery-prev]");
+  const ranchGalleryNext = document.querySelector("[data-ranch-gallery-next]");
+
+  if (ranchGalleryImage && ranchGalleryThumbs.length > 0) {
+    let activeRanchGalleryIndex = 0;
+
+    function showRanchGalleryImage(index) {
+      activeRanchGalleryIndex = (index + ranchGalleryThumbs.length) % ranchGalleryThumbs.length;
+      const activeThumb = ranchGalleryThumbs[activeRanchGalleryIndex];
+      const nextSrc = activeThumb.getAttribute("data-src");
+      const nextAlt = activeThumb.getAttribute("data-alt");
+
+      ranchGalleryImage.src = nextSrc;
+      ranchGalleryImage.alt = nextAlt || "";
+
+      ranchGalleryThumbs.forEach((thumb, thumbIndex) => {
+        thumb.classList.toggle("active", thumbIndex === activeRanchGalleryIndex);
+        thumb.setAttribute("aria-pressed", String(thumbIndex === activeRanchGalleryIndex));
+      });
+    }
+
+    ranchGalleryThumbs.forEach((thumb, index) => {
+      thumb.setAttribute("aria-pressed", String(index === activeRanchGalleryIndex));
+      thumb.addEventListener("click", () => showRanchGalleryImage(index));
+    });
+
+    ranchGalleryPrev?.addEventListener("click", () => {
+      showRanchGalleryImage(activeRanchGalleryIndex - 1);
+    });
+
+    ranchGalleryNext?.addEventListener("click", () => {
+      showRanchGalleryImage(activeRanchGalleryIndex + 1);
+    });
+  }
 });

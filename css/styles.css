@@ -370,6 +370,98 @@ section {
   text-shadow: 2px 2px 0px #333;
 }
 
+/* Ranch Page Gallery */
+.ranch-gallery {
+  margin: 2rem 0;
+  padding: 1rem 0 0;
+  text-align: left;
+}
+
+.ranch-gallery-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.ranch-gallery-header h2 {
+  font-family: 'YoungSerif';
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 400;
+}
+
+.ranch-gallery-viewer {
+  position: relative;
+  overflow: hidden;
+  border: 5px solid black;
+  border-radius: var(--radius);
+  background: white;
+  aspect-ratio: 16 / 10;
+}
+
+.ranch-gallery-viewer img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ranch-gallery-control {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 3rem;
+  height: 3rem;
+  transform: translateY(-50%);
+  border: 3px solid black;
+  border-radius: 50%;
+  background: white;
+  color: black;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.ranch-gallery-control:hover,
+.ranch-gallery-thumbs button:hover,
+.ranch-gallery-thumbs button.active {
+  background: var(--blue);
+}
+
+.ranch-gallery-control:first-of-type {
+  left: 1rem;
+}
+
+.ranch-gallery-control:last-of-type {
+  right: 1rem;
+}
+
+.ranch-gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(84px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.ranch-gallery-thumbs button {
+  min-width: 84px;
+  padding: 0.25rem;
+  border: 3px solid black;
+  border-radius: calc(var(--radius) / 2);
+  background: white;
+  cursor: pointer;
+}
+
+.ranch-gallery-thumbs img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: block;
+  border-radius: calc(var(--radius) / 3);
+  object-fit: cover;
+  object-position: center;
+}
+
 /* Modal for dog details */
 .modal {
   position: fixed;
