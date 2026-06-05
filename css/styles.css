@@ -393,6 +393,47 @@ section {
   border-radius: 1em;
 }
 
+.blankets-merch-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 2rem auto 1rem;
+  padding: 1.25rem;
+}
+
+.blankets-merch-link h2 {
+  margin: 0.15rem 0 0.35rem;
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+}
+
+.blankets-merch-link p {
+  margin: 0;
+}
+
+.blankets-merch-label {
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.blankets-merch-link .pop-button {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 700px) {
+  .blankets-merch-link {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .blankets-merch-link .pop-button {
+    margin-left: 0;
+  }
+}
+
 .columns {
   display: flex;
   flex-wrap: wrap;
