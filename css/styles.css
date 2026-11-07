@@ -341,7 +341,7 @@ img {
   background-position: 0% 60%;
 }
 
-#book {
+#book, .book-section {
   text-align: center;
 }
 
@@ -844,9 +844,6 @@ section {
   --webkit-overflow-y: scroll;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
 
 /* #dogBio::after {
   content: "";
@@ -941,10 +938,115 @@ footer {
   text-align: center;
   padding: 4rem 1rem 4rem 1rem;
   background: var(--green);
-  color: white;
+  color: black;
   margin-top: 5rem;
 }
 
 footer a {
-  color: white;
+  color: black;
+}
+
+/* Support and volunteer/visit updates reuse the site's paper and button styles. */
+.support-club, .visit-intro {
+  color: black;
+  min-height: auto;
+  margin-bottom: 2rem;
+}
+.support-club { background: var(--blue); }
+.support-club p + p, .visit-intro p + p { margin-top: 1rem; }
+#ranchInterestForm fieldset {
+  border: 3px solid black;
+  padding: 1rem;
+  border-radius: calc(var(--radius) / 2);
+  min-width: 0;
+}
+#ranchInterestForm legend { padding: 0 0.35rem; font-weight: bold; }
+#ranchInterestForm .ranch-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 0.75rem 0;
+  cursor: pointer;
+}
+#ranchInterestForm input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 1.25rem;
+  margin: 0.2rem 0 0;
+  padding: 0;
+  accent-color: black;
+}
+#ranchInterestForm input:not([type="checkbox"]), #ranchInterestForm textarea {
+  width: 100%;
+  max-width: 100%;
+  font: inherit;
+}
+#ranchInterestForm textarea { resize: vertical; }
+#ranchInterestForm button { padding: 1rem; font-family: inherit; cursor: pointer; }
+#ranchInterestForm a { overflow-wrap: anywhere; }
+#interestError { color: #a12020; }
+#rStatus:empty { display: none; }
+@media (min-width: 1050px) {
+  .main-nav ul { flex-wrap: wrap; row-gap: 0.5rem; }
+}
+@media (max-width: 600px) {
+  .support-club .hero-content, .visit-intro .hero-content { padding: 1.25rem; }
+  .support-club h2, .visit-intro h2 { font-size: 2rem; }
+}
+
+/* Screen-reader text; does not change page layout. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Keyboard navigation: visible only when the skip link receives focus. */
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2000;
+  padding: 0.75rem 1rem;
+  border: 3px solid black;
+  border-radius: calc(var(--radius) / 2);
+  background: white;
+  color: black;
+  font-weight: 900;
+}
+.skip-link:not(:focus) {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+:focus-visible {
+  outline: 3px solid black;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px white;
+}
+
+/* Keep animation completion events working while eliminating visible motion. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    animation-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .pop-button:hover, .pop-button:active, .social-links-floating a:hover {
+    transform: none !important;
+  }
 }

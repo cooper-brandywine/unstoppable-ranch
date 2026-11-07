@@ -22,7 +22,7 @@
 </head>
 <body>
   <!-- Dynamic Header -->
-    <div id="header"> 
+    <div id="header" role="banner">
         <div class="navbar">
             <div class="logo">
                 <img src="images/TheUnstoppableRanchLogo.jpg" style="max-height: 25vh" id="logoImg" alt="Unstoppable Ranch Logo" />
@@ -30,9 +30,11 @@
         </div>
     </div>
 
+  <main id="main-content">
   <section class="container" id="comesitheal">
+    <h1 class="sr-only">Come • Sit • Heal</h1>
     <div class="hero-content">
-       <img src="/images/come-sit-heal.jpeg" style="border-radius:24px;">
+       <img src="/images/come-sit-heal.jpeg" alt="Come • Sit • Heal" style="border-radius:24px;">
       <p>
         <h2>A movement of love, resilience, and healing</h2><br>
         
@@ -54,19 +56,21 @@ Each Come • Sit • Heal visit supports the care, therapy, and outreach progra
       <h3>Fill out the form below to contact us about hosting a Come • Sit • Heal event</h3>
     </div>
       <form id="comeSitHealForm" class="volunteer-form">
-      <label for="vName">Name:</label>
-      <input type="text" id="cName" name="vName" required />
+      <label for="cName">Name:</label>
+      <input type="text" id="cName" autocomplete="name" name="vName" required />
 
-      <label for="vPhone">Phone Number:</label>
-      <input type="tel" id="cPhone" name="vPhone" required />
+      <label for="cPhone">Phone Number:</label>
+      <input type="tel" id="cPhone" autocomplete="tel" name="vPhone" required />
 
-      <label for="vLocation">Location of the event:</label>
+      <label for="cLocation">Location of the event:</label>
       <input type="text" id="cLocation" name="vLocation" required />
 
       Note: When you click submit, the form will open your e-mail account with a pre-composed e-mail containing your form information. Simply click send and your volunteer form will be submitted. If you experience any difficulty sending the email, send the information from the above form to debbie@theunstoppableranch.org
       <button type="submit" class="pop-button" id="vSubmit">Open My Email</button>
     </form>
   </section>
+
+  </main>
 
   <footer>
     <div id="footer"></div>

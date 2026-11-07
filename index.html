@@ -26,19 +26,20 @@
 </head>
 <body>
   <!-- Dynamic Header -->
-  <div id="header">
+  <div id="header" role="banner">
     <div class="navbar">
       <div class="logo">
         <img src="images/TheUnstoppableRanchLogo.jpg" style="max-height: 25vh" id="logoImg" alt="Unstoppable Ranch Logo" />
       </div>
     </div>
   </div>
+  <main id="main-content">
   <section class="container">
   <!-- Hero / Mission -->
   <section class="hero paper" style="background-image: url('images/ranch-mockup-4.jpg');" id="home">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h2>The Unstoppable Ranch</h2>
+      <h1>The Unstoppable Ranch</h1>
       <p>The Unstoppable Ranch, nestled in beautiful Temecula, California, is a sanctuary built for some of the most vulnerable, forgotten, and extraordinary dogs in the world.</p>
     </div>
   </section>
@@ -66,17 +67,17 @@
         <div><a class="pop-button" href="dogs.html">Meet the Dogs</a></div>
             
         <!-- Modal for dog details -->
-            <div class="modal" id="dogModal">
+            <div class="modal" id="dogModal" role="dialog" aria-modal="true" aria-labelledby="dogName">
               <div class="modal-content paper">
-                <span class="close-modal spin" id="modalClose">&times;</span>
+                <span class="close-modal spin" id="modalClose" role="button" tabindex="0" aria-label="Close dog story">&times;</span>
                   <div class="img-container">
                     <img id="dogImage" src="" alt="Dog Image" />
                   </div>
-                <button id="prevDog" class="pop-button">&laquo;</button>
-                <button id="nextDog" class="pop-button">&raquo;</button>
+                <button id="prevDog" aria-label="Previous dog" class="pop-button">&laquo;</button>
+                <button id="nextDog" aria-label="Next dog" class="pop-button">&raquo;</button>
                   <div class="dogInfo"> 
-                    <h2 id="dogName"></h2>
-                    <p id="dogBio"></p>
+                    <h2 id="dogName" aria-live="polite"></h2>
+                    <p id="dogBio" tabindex="0"></p>
                   </div>
                 <div id="dogPressLinks"></div>
               </div>
@@ -109,11 +110,11 @@
       <div class="hero-content">
         <div class="columns">
           <div>
-            <object type="image/svg+xml" data-lazy-svg="unstoppableranch-icon-04.svg" height="200"></object>
+            <object aria-hidden="true" tabindex="-1" type="image/svg+xml" data-lazy-svg="unstoppableranch-icon-04.svg" height="200"></object>
            </div>
           <div>
             <h2 class="paper center blue">Support the Ranch</h2>
-            <p>Your support makes this possible. Help us take care of the pups. Find our current fundraising links and a volunteer form on our Support Page.</p>
+            <p>Your support makes this possible. Help us take care of the pups. Find our current fundraising links on our Support Page, or <a href="volunteer.html">volunteer and meet the dogs</a>.</p>
             <a class="pop-button" href="support.html">Support Page</a>
           </div>
         </div>
@@ -145,6 +146,8 @@
 
   </div>
   </div> -->
+
+  </main>
 
   <footer>
   <div id="footer"></div>

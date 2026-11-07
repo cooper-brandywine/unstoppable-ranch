@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!header) return;
 
   header.innerHTML = `
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="top-banner"> The Unstoppable Ranch is a 501(c)(3) Organization</div>
     <div class="navbar">
-      <div class="menu-icon" id="menuIcon" aria-label="Open Menu">
+      <div class="menu-icon" id="menuIcon" role="button" tabindex="0" aria-label="Open Menu" aria-controls="mainNav" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -23,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <a class="pop-button header-action" id="donate" href="https://www.paypal.com/donate/?hosted_button_id=F46DZZ5KCQD72" target="_blank">Donate</a>
     </div>
 
-    <nav class="main-nav" id="mainNav">
+    <nav aria-label="Main navigation" class="main-nav" id="mainNav">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <li><a href="ranch.html">The Ranch</a></li>
         <li><a href="book.html">The Book</a></li>
         <li><a href="support.html">Support</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="volunteer.html">Volunteer &amp; Visit</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="come-sit-heal.html">Events</a></li>
         <li><a href="merch.html">Merch</a></li>
@@ -45,14 +46,48 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   `;
 
+  const mainContent = document.getElementById("main-content");
+  if (mainContent) {
+    mainContent.tabIndex = -1;
+    header.querySelector(".skip-link").addEventListener("click", () => {
+      // Move keyboard focus as well as following the anchor to the content.
+      mainContent.focus({ preventScroll: true });
+    });
+  }
+
   // Toggle menu in mobile view
   const menuIcon = document.getElementById("menuIcon");
   const mainNav = document.getElementById("mainNav");
 
-  menuIcon.addEventListener("click", function () {
+  const desktopNav = window.matchMedia("(min-width: 1050px)");
+  function syncMenu() {
+    const expanded = mainNav.classList.contains("nav-open");
+    menuIcon.setAttribute("aria-expanded", String(expanded));
+    menuIcon.setAttribute("aria-label", expanded ? "Close Menu" : "Open Menu");
+    // Collapsed links must not remain in the keyboard or screen-reader order.
+    mainNav.inert = !desktopNav.matches && !expanded;
+  }
+  menuIcon.addEventListener("click", () => {
     mainNav.classList.toggle("nav-open");
     menuIcon.classList.toggle("active");
+    syncMenu();
   });
+  menuIcon.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      menuIcon.click();
+    }
+  });
+  mainNav.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !desktopNav.matches) {
+      mainNav.classList.remove("nav-open");
+      menuIcon.classList.remove("active");
+      menuIcon.focus();
+      syncMenu();
+    }
+  });
+  desktopNav.addEventListener("change", syncMenu);
+  syncMenu();
 
 // Highlight the current page link
 const navLinks = document.querySelectorAll("nav a");
@@ -61,6 +96,7 @@ const currentPath = window.location.pathname.split("/").pop() || "index.html"; /
 navLinks.forEach(link => {
     if (link.getAttribute("href") === currentPath) {
         link.classList.add("current");
+        link.setAttribute("aria-current", "page");
     }
 });
     // // Change the logo for mobile view

@@ -1,18 +1,18 @@
-<!-- support.html -->
+<!-- volunteer.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Support Unstoppable Dogs & Unstoppable Ranch." />
-  <meta name="keywords" content="Support, Donate, Volunteer, Amazon Wishlist, Chewy Wishlist" />
+  <meta name="description" content="Volunteer or join the invitation list for meet-and-greets at The Unstoppable Ranch." />
+  <meta name="keywords" content="Volunteer, Visit, Meet-and-Greet, Unstoppable Ranch" />
   <meta name="author" content="Unstoppable Ranch" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Social Sharing Meta -->
-  <meta property="og:title" content="Support | Unstoppable Ranch" />
-  <meta property="og:description" content="Ways you can help our special needs pups." />
-  <meta property="og:image" content="images/hero-support.jpg" />
-  <meta property="og:url" content="https://theunstoppableranch.com/volunteer.html" />
+  <meta property="og:title" content="Volunteer &amp; Visit | Unstoppable Ranch" />
+  <meta property="og:description" content="Volunteer or request an invitation to meet our extraordinary dogs." />
+  <meta property="og:image" content="images/hero-volunteer.webp" />
+  <meta property="og:url" content="https://www.theunstoppableranch.org/volunteer.html" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
@@ -24,48 +24,57 @@
   <link rel="stylesheet" href="css/styles.css" />
 
 
-  <title>Volunteer | Unstoppable Ranch</title>
+  <title>Volunteer &amp; Visit | Unstoppable Ranch</title>
 </head>
 <body>
   <!-- Dynamic Header -->
-  <div id="header"> <div class="navbar">
+  <div id="header" role="banner"> <div class="navbar">
     <div class="logo">
       <img src="images/TheUnstoppableRanchLogo.jpg" style="max-height: 25vh" id="logoImg" alt="Unstoppable Ranch Logo" />
     </div>
   </div></div>
 
+  <main id="main-content">
   <section class="container slideUp">
   <section class="hero paper" style="background-image: url('images/hero-volunteer.webp');">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Volunteer</h1>
-      <p>Fill out the form to begin the process</p>
+      <h1>Volunteer &amp; Visit</h1>
+      <p>Meet our Unstoppable Family. Find your way to be part of it.</p>
     </div>
     </section>
 </section>
 
   <section class="container">
-    <!-- <h2 style="text-align:center">Volunteer</h2> -->
-    <form id="volunteerForm" class="volunteer-form">
-      <label for="vName">Name:</label>
-      <input type="text" id="vName" name="vName" required />
-
-      <label for="vPhone">Phone Number:</label>
-      <input type="tel" id="vPhone" name="vPhone" required />
-
-      <label for="vLocation">City/State of Residence:</label>
-      <input type="text" id="vLocation" name="vLocation" required />
-
-      <label for="vAvailability">Availability (Days/Times):</label>
-      <input type="text" id="vAvailability" name="vAvailability" required />
-
-      <label for="vExperience">Any Relevant Experience:</label>
-      <textarea id="vExperience" name="vExperience" rows="4"></textarea>
-
-      Note: When you click submit, the form will open your e-mail account with a pre-composed e-mail containing your form information. Simply click send and your volunteer form will be submitted. If you experience any difficulty sending the email, send the information from the above form to debbie@theunstoppableranch.org
-      <button type="submit" class="pop-button" id="vSubmit">Open My Email</button>
-    </form>
+    <div class="hero paper visit-intro"><div class="hero-content">
+<h2>Come Meet the Family</h2>
+<p>Whether you’d like to lend a hand or simply meet our extraordinary dogs, we’d love to hear from you. The Unstoppable Ranch is a nonprofit sanctuary and a home. Our dogs are Family, and visits take place during scheduled meet-and-greets by invitation.</p>
+<p>Choose your interests below. We’ll contact you about upcoming opportunities. If you’re interested in volunteering, a meet-and-greet is a chance to meet the dogs and discuss how you can help.</p>
+</div></div>
+<form id="ranchInterestForm" class="volunteer-form">
+<fieldset aria-describedby="interestError"><legend>I’m interested in… (choose one or both)</legend>
+<label class="ranch-choice"><input type="checkbox" name="interest" value="Volunteering"> Volunteering at The Ranch</label>
+<label class="ranch-choice"><input type="checkbox" name="interest" value="Visiting"> Visiting The Ranch and meeting the dogs</label>
+<p id="interestError" role="alert" hidden>Please choose volunteering, visiting, or both.</p>
+</fieldset>
+<label for="rName">Name *</label><input id="rName" name="name" autocomplete="name" required maxlength="150">
+<label for="rEmail">Email *</label><input type="email" id="rEmail" name="email" autocomplete="email" required maxlength="200">
+<label for="rPhone">Phone (optional)</label><input type="tel" id="rPhone" name="phone" autocomplete="tel" maxlength="60">
+<label for="rLocation">City / State (optional)</label><input id="rLocation" name="location" maxlength="200">
+<label class="ranch-choice"><input type="checkbox" id="rInvites" name="invitations" checked> Please email me invitations to upcoming meet-and-greets.</label>
+<label for="rAvailability">Proposed dates or days / times you’re available (optional)</label><textarea id="rAvailability" name="availability" rows="3" maxlength="600" placeholder="For example: Saturday afternoons, or a few dates that work for you"></textarea>
+<p>Your availability helps us plan. This form does not reserve a visit; all dates must be confirmed by The Ranch.</p>
+<label for="rExperience">Volunteer interests or relevant experience (optional)</label><textarea id="rExperience" name="experience" rows="3" maxlength="800"></textarea>
+<label for="rNotes">Anything else you’d like us to know? (optional)</label><textarea id="rNotes" name="notes" rows="3" maxlength="600"></textarea>
+<p>Click “Open My Email,” then send the prepared message to complete your request. Your information is not submitted until you send the email. We’ll use the contact details you provide to respond and, if selected, email meet-and-greet invitations.</p>
+<button type="submit" class="pop-button">Open My Email</button>
+<p id="rStatus" role="status"></p>
+<p>If your email app does not open, email your details and interests to <a href="mailto:debbie@theunstoppableranch.org">debbie@theunstoppableranch.org</a>.</p>
+<noscript>Please email your details and interests directly to debbie@theunstoppableranch.org. This form needs JavaScript to prepare your email.</noscript>
+</form>
   </section>
+
+  </main>
 
   <footer>
     <div id="footer"></div>
@@ -73,5 +82,5 @@
   <script src="js/header.js"></script>
   <script src="js/footer.js"></script>
   <script src="js/main.js"></script>
-</body>
+<script src="js/volunteer.js"></script></body>
 </html>

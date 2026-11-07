@@ -202,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (ranchVideoDuration) ranchVideoDuration.textContent = formatVideoTime(duration);
       if (ranchVideoSeek && duration > 0) {
         ranchVideoSeek.value = String((currentTime / duration) * 100);
+        ranchVideoSeek.setAttribute("aria-valuetext", `${formatVideoTime(currentTime)} of ${formatVideoTime(duration)}`);
       }
     }
 

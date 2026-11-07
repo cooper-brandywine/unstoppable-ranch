@@ -30,10 +30,20 @@ document.addEventListener("DOMContentLoaded", () => {
         dogsData.forEach((dog, index) => {
           const item = document.createElement("div");
           item.classList.add("gallery-item", "pop-button");
+          item.setAttribute("role", "button");
+          item.tabIndex = 0;
+          item.setAttribute("aria-label", `Read ${dog.name}'s story`);
+          item.setAttribute("aria-haspopup", "dialog");
+          item.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              item.click();
+            }
+          });
           item.style.backgroundImage = `url(${dog.image})`;
           item.innerHTML = `
            
-            <h3>${dog.name}</h3>
+            <h3 aria-level="${limit ? 3 : 2}">${dog.name}</h3>
           `;
           // On click, open modal
           item.addEventListener("click", () => openDogModal(index));
@@ -47,9 +57,53 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2) Modal Functions
   // -------------------------
 
+  let returnFocus = null;
+  let inertElements = [];
+  function isolateDialog() {
+    // Walk ancestors so this also works for the nested dialog on the home page.
+    let branch = dogModal;
+    while (branch.parentElement) {
+      for (const sibling of branch.parentElement.children) {
+        if (sibling !== branch && !sibling.inert && !["SCRIPT", "STYLE"].includes(sibling.tagName)) {
+          sibling.inert = true;
+          inertElements.push(sibling);
+        }
+      }
+      branch = branch.parentElement;
+      if (branch === document.body) break;
+    }
+  }
+  function closeDogModal() {
+    dogModal.classList.remove("active");
+    inertElements.forEach(element => { element.inert = false; });
+    inertElements = [];
+    returnFocus?.focus();
+  }
+  modalClose.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      closeDogModal();
+    }
+  });
+  dogModal.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeDogModal();
+    } else if (event.key === "Tab") {
+      const focusable = Array.from(dogModal.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]'));
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault(); last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault(); first.focus();
+      }
+    }
+  });
   let currentDogIndex = 0; // Track the currently displayed dog
 
   function openDogModal(index) {
+    const opening = !dogModal.classList.contains("active");
+    if (opening) returnFocus = document.activeElement;
     currentDogIndex = index; // Update the current dog index
     const dog = dogsData[index];
 
@@ -73,6 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     dogModal.classList.add("active");
+    if (opening) {
+      isolateDialog();
+      modalClose.focus();
+    }
   }
 
   // Navigate to the previous dog
@@ -95,14 +153,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("prevDog").addEventListener("click", showPreviousDog);
   document.getElementById("nextDog").addEventListener("click", showNextDog);
 
-  modalClose.addEventListener("click", () => {
-    dogModal.classList.remove("active");
-  });
+  modalClose.addEventListener("click", closeDogModal);
 
   // Close if clicked outside modal content
   dogModal.addEventListener("click", event => {
     if (event.target === dogModal) {
-      dogModal.classList.remove("active");
+      closeDogModal();
     }
   });
 

@@ -25,13 +25,14 @@
 </head>
 <body>
   <!-- Dynamic Header -->
-  <div id="header">
+  <div id="header" role="banner">
     <div class="navbar">
     <div class="logo">
       <img src="images/TheUnstoppableRanchLogo.jpg" style="max-height: 25vh" id="logoImg" alt="Unstoppable Ranch Logo" />
     </div>
   </div></div>
 
+  <main id="main-content">
   <section class="container center slideUp">
     <section class="hero paper" style="background-image: url('images/ranch/the-dogs-at-the-unstoppable-ranch.jpeg');">
       <div class="hero-overlay"></div>
@@ -46,17 +47,18 @@
       <div class="ranch-video-player" data-ranch-video-player>
         <video
           data-ranch-video
+          aria-labelledby="ranch-video-title"
           playsinline
           preload="metadata"
         >
           <source src="videos/the-ranch.mp4" type="video/mp4" />
           Your browser does not support this video.
         </video>
-        <div class="ranch-video-controls" aria-label="Ranch video controls">
+        <div class="ranch-video-controls" role="group" aria-label="Ranch video controls">
           <button class="ranch-video-button" type="button" data-ranch-video-toggle aria-label="Play video">Play</button>
-          <label class="ranch-video-progress-label" aria-label="Video progress">
+          <label class="ranch-video-progress-label">
             <span data-ranch-video-current>0:00</span>
-            <input data-ranch-video-seek type="range" min="0" max="100" value="0" step="0.1" />
+            <input aria-label="Video progress" data-ranch-video-seek type="range" min="0" max="100" value="0" step="0.1" />
             <span data-ranch-video-duration>0:00</span>
           </label>
           <button class="ranch-video-button" type="button" data-ranch-video-mute aria-label="Mute video">Sound</button>
@@ -79,7 +81,7 @@
         />
         <button class="ranch-gallery-control" type="button" data-ranch-gallery-next aria-label="Next ranch photo">&#8250;</button>
       </div>
-      <div class="ranch-gallery-thumbs" aria-label="Ranch photo thumbnails">
+      <div class="ranch-gallery-thumbs" role="group" aria-label="Ranch photo thumbnails">
         <button type="button" class="active" aria-label="Show the dogs gathered at The Unstoppable Ranch" data-ranch-gallery-thumb data-src="images/ranch/the-dogs-at-the-unstoppable-ranch.jpeg" data-alt="The dogs gathered at The Unstoppable Ranch">
           <img src="images/ranch/the-dogs-at-the-unstoppable-ranch.jpeg" alt="" loading="lazy" />
         </button>
@@ -109,6 +111,8 @@
     </section>
     <a class="pop-button" href="https://www.paypal.com/donate/?hosted_button_id=F46DZZ5KCQD72" target="_blank">Donate Now</a>
   </section>
+
+  </main>
 
   <footer>
     <div id="footer"></div>
