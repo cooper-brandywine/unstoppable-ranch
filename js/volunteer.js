@@ -13,7 +13,7 @@
    'City / State: ' + value('rLocation'), 'Meet-and-greet invitations: ' + (document.getElementById('rInvites').checked ? 'Yes' : 'No'),
    'Availability: ' + value('rAvailability'), 'Volunteer interests / experience: ' + value('rExperience'),
    'Additional notes: ' + value('rNotes'), 'I understand that visits must be confirmed by The Ranch.' ].join('\n\n');
-  window.location.href = 'mailto:debbie@theunstoppableranch.org?subject=' + encodeURIComponent('Ranch Interest: ' + interests.join(' & ')) + '&body=' + encodeURIComponent(body);
+  window.location.href = 'mailto:unstoppablelaurenbarrantes@gmail.com?subject=' + encodeURIComponent('Ranch Interest: ' + interests.join(' & ')) + '&body=' + encodeURIComponent(body);
   document.getElementById('rStatus').textContent = 'Please send the message in your email app to complete your request. If no app opened, use the email address below. Your request has not been sent by this page.';
  });
 })();
